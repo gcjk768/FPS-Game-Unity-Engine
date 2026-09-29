@@ -102,7 +102,7 @@ These are the known limits, stated plainly:
 - **Grenades don't damage anything.** Explosions push and recolour targets but never call `TakeDamage`.
 - **Off-by-one in `Shootable`.** It destroys the cube when `health < 0`, so a 10-HP cube takes 11 hits.
 - **Legacy Input Manager and `OnGUI`** instead of the new Input System and a Canvas HUD.
-- **Repo hygiene.** The root `.gitignore` uses root-anchored paths (`/[Ll]ibrary/`) but the Unity project lives in `My project/`. As a result, `Library/`, `Logs/`, `obj/` and `UserSettings/` were committed. The fix is to move the ignore file into `My project/` (or un-anchor the patterns) and `git rm -r --cached` those folders.
+- **Repo hygiene.** Unity's generated folders (`Library/`, `Logs/`, `obj/`, `UserSettings/`) were once committed because the `.gitignore` patterns were root-anchored while the project lives in `My project/`. The patterns are now un-anchored and those folders untracked; Unity regenerates them on first open.
 
 **Roadmap, if the project is revived:** a NavMesh enemy with a patrol → chase → attack state machine; a health and ammo HUD; a `Weapon` base class and ScriptableObject weapon data; PlayMode tests for damage and respawn.
 
